@@ -27,3 +27,23 @@ plat_table = (
 )
 
 arch_table = (
+    ('x86', ('i?86', )),
+    ('x86_64', ('x64', 'x86_64', 'amd64', 'intel')),
+    ('arm', ('armv5',)),
+    ('armv6', ('armv6l',)),
+    ('armv7', ('armv7l',)),
+    ('ppc64', ('ppc64le',)),
+    ('mips32', ('mips',)),
+    ('aarch32', ('aarch32',)),
+    ('aarch64', ('aarch64', 'arm64'))
+)
+
+#
+# Hardware type
+#
+HT_HARDDISK, HT_IFMAC, HT_IPV4, HT_IPV6, HT_DOMAIN = range(5)
+
+#
+# Global
+#
+_pytransform = None
