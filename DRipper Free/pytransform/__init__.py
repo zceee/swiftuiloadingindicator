@@ -76,3 +76,26 @@ def init_pytransform():
     ret = init_module(major, minor, pythonapi._handle)
     if (ret & 0xF000) == 0x1000:
         raise PytransformError('Initialize python wrapper failed (%d)'
+                               % (ret & 0xFFF))
+    return ret
+
+
+@dllmethod
+def init_runtime():
+    prototype = PYFUNCTYPE(c_int, c_int, c_int, c_int, c_int)
+    _init_runtime = prototype(('init_runtime', _pytransform))
+    return _init_runtime(0, 0, 0, 0)
+
+
+@dllmethod
+def encrypt_code_object(pubkey, co, flags, suffix=''):
+    _pytransform.set_option(6, suffix.encode())
+    prototype = PYFUNCTYPE(py_object, py_object, py_object, c_int)
+    dlfunc = prototype(('encrypt_code_object', _pytransform))
+    return dlfunc(pubkey, co, flags)
+
+
+@dllmethod
+def generate_license_file(filename, priname, rcode, start=-1, count=1):
+    prototype = PYFUNCTYPE(c_int, c_char_p, c_char_p, c_char_p, c_int, c_int)
+    dlfunc = prototype(('generate_project_license_files', _pytransform))
