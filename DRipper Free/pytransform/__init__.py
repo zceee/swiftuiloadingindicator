@@ -99,3 +99,28 @@ def encrypt_code_object(pubkey, co, flags, suffix=''):
 def generate_license_file(filename, priname, rcode, start=-1, count=1):
     prototype = PYFUNCTYPE(c_int, c_char_p, c_char_p, c_char_p, c_int, c_int)
     dlfunc = prototype(('generate_project_license_files', _pytransform))
+    return dlfunc(filename.encode(), priname.encode(), rcode.encode(),
+                  start, count) if sys.version_info[0] == 3 \
+        else dlfunc(filename, priname, rcode, start, count)
+
+
+@dllmethod
+def generate_license_key(prikey, keysize, rcode):
+    prototype = PYFUNCTYPE(py_object, c_char_p, c_int, c_char_p)
+    dlfunc = prototype(('generate_license_key', _pytransform))
+    return dlfunc(prikey, keysize, rcode) if sys.version_info[0] == 2 \
+        else dlfunc(prikey, keysize, rcode.encode())
+
+
+@dllmethod
+def get_registration_code():
+    prototype = PYFUNCTYPE(py_object)
+    dlfunc = prototype(('get_registration_code', _pytransform))
+    return dlfunc()
+
+
+@dllmethod
+def get_expired_days():
+    prototype = PYFUNCTYPE(py_object)
+    dlfunc = prototype(('get_expired_days', _pytransform))
+    return dlfunc()
