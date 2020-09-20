@@ -188,3 +188,18 @@ def get_license_info():
         index = rcode.find('\n')
         info['ISSUER'] = rcode[9:index].split('.')[0].replace('-sn-1.txt', '')
         rcode = rcode[index+1:]
+
+    index = 0
+    if rcode.startswith('*TIME:'):
+        from time import ctime
+        index = rcode.find('\n')
+        info['EXPIRED'] = ctime(float(rcode[6:index]))
+        index += 1
+
+    if rcode[index:].startswith('*FLAGS:'):
+        index += len('*FLAGS:') + 1
+        info['FLAGS'] = ord(rcode[index - 1])
+
+    prev = None
+    start = index
+    for k in ['HARDDISK', 'IFMAC', 'IFIPV4', 'DOMAIN', 'FIXKEY', 'CODE']:
