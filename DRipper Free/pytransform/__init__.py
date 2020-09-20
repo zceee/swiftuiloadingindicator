@@ -144,3 +144,27 @@ def clean_str(*args):
         if k is None:
             raise RuntimeError('Can not clean object: %s' % obj)
         clean_obj(obj, k)
+
+
+def get_hd_info(hdtype, size=256):
+    if hdtype not in range(HT_DOMAIN + 1):
+        raise RuntimeError('Invalid parameter hdtype: %s' % hdtype)
+    t_buf = c_char * size
+    buf = t_buf()
+    if (_pytransform.get_hd_info(hdtype, buf, size) == -1):
+        raise PytransformError('Get hardware information failed')
+    return buf.value.decode()
+
+
+def show_hd_info():
+    return _pytransform.show_hd_info()
+
+
+def assert_armored(*names):
+    prototype = PYFUNCTYPE(py_object, py_object)
+    dlfunc = prototype(('assert_armored', _pytransform))
+
+    def wrapper(func):
+        def wrap_execute(*args, **kwargs):
+            dlfunc(names)
+            return func(*args, **kwargs)
