@@ -124,3 +124,23 @@ def get_expired_days():
     prototype = PYFUNCTYPE(py_object)
     dlfunc = prototype(('get_expired_days', _pytransform))
     return dlfunc()
+
+
+@dllmethod
+def clean_obj(obj, kind):
+    prototype = PYFUNCTYPE(c_int, py_object, c_int)
+    dlfunc = prototype(('clean_obj', _pytransform))
+    return dlfunc(obj, kind)
+
+
+def clean_str(*args):
+    tdict = {
+        'str': 0,
+        'bytearray': 1,
+        'unicode': 2
+    }
+    for obj in args:
+        k = tdict.get(type(obj).__name__)
+        if k is None:
+            raise RuntimeError('Can not clean object: %s' % obj)
+        clean_obj(obj, k)
