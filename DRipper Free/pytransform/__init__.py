@@ -203,3 +203,38 @@ def get_license_info():
     prev = None
     start = index
     for k in ['HARDDISK', 'IFMAC', 'IFIPV4', 'DOMAIN', 'FIXKEY', 'CODE']:
+        index = rcode.find('*%s:' % k)
+        if index > -1:
+            if prev is not None:
+                info[prev] = rcode[start:index]
+            prev = k
+            start = index + len(k) + 2
+    info['CODE'] = rcode[start:]
+    i = info['CODE'].find(';')
+    if i > 0:
+        info['DATA'] = info['CODE'][i+1:]
+        info['CODE'] = info['CODE'][:i]
+    return info
+
+
+def get_license_code():
+    return get_license_info()['CODE']
+
+
+def get_user_data():
+    return get_license_info()['DATA']
+
+
+def _match_features(patterns, s):
+    for pat in patterns:
+        if fnmatch(s, pat):
+            return True
+
+
+def _gnu_get_libc_version():
+    try:
+        prototype = CFUNCTYPE(c_char_p)
+        ver = prototype(('gnu_get_libc_version', cdll.LoadLibrary('')))()
+        return ver.decode().split('.')
+    except Exception:
+        pass
