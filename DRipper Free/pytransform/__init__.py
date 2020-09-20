@@ -238,3 +238,21 @@ def _gnu_get_libc_version():
         return ver.decode().split('.')
     except Exception:
         pass
+
+
+def format_platform(platid=None):
+    if platid:
+        return os.path.normpath(platid)
+
+    plat = platform.system().lower()
+    mach = platform.machine().lower()
+
+    for alias, platlist in plat_table:
+        if _match_features(platlist, plat):
+            plat = alias
+            break
+
+    if plat == 'linux':
+        cname, cver = platform.libc_ver()
+        if cname == 'musl':
+            plat = 'musl'
