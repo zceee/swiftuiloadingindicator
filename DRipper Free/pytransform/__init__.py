@@ -168,3 +168,23 @@ def assert_armored(*names):
         def wrap_execute(*args, **kwargs):
             dlfunc(names)
             return func(*args, **kwargs)
+        return wrap_execute
+    return wrapper
+
+
+def get_license_info():
+    info = {
+        'ISSUER': None,
+        'EXPIRED': None,
+        'HARDDISK': None,
+        'IFMAC': None,
+        'IFIPV4': None,
+        'DOMAIN': None,
+        'DATA': None,
+        'CODE': None,
+    }
+    rcode = get_registration_code().decode()
+    if rcode.startswith('*VERSION:'):
+        index = rcode.find('\n')
+        info['ISSUER'] = rcode[9:index].split('.')[0].replace('-sn-1.txt', '')
+        rcode = rcode[index+1:]
