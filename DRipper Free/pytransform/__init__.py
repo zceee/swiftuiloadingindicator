@@ -278,3 +278,35 @@ def format_platform(platid=None):
 
 # Load _pytransform library
 def _load_library(path=None, is_runtime=0, platid=None, suffix='', advanced=0):
+    path = os.path.dirname(__file__) if path is None \
+        else os.path.normpath(path)
+
+    plat = platform.system().lower()
+    name = '_pytransform' + suffix
+    if plat == 'linux':
+        filename = os.path.abspath(os.path.join(path, name + '.so'))
+    elif plat == 'darwin':
+        filename = os.path.join(path, name + '.dylib')
+    elif plat == 'windows':
+        filename = os.path.join(path, name + '.dll')
+    elif plat == 'freebsd':
+        filename = os.path.join(path, name + '.so')
+    else:
+        raise PytransformError('Platform %s not supported' % plat)
+
+    if platid is not None and os.path.isfile(platid):
+        filename = platid
+    elif platid is not None or not os.path.exists(filename) or not is_runtime:
+        libpath = platid if platid is not None and os.path.isabs(platid) else \
+            os.path.join(path, plat_path, format_platform(platid))
+        filename = os.path.join(libpath, os.path.basename(filename))
+
+    if not os.path.exists(filename):
+        raise PytransformError('Could not find "%s"' % filename)
+
+    try:
+        m = cdll.LoadLibrary(filename)
+    except Exception as e:
+        if sys.flags.debug:
+            print('Load %s failed:\n%s' % (filename, e))
+        raise
