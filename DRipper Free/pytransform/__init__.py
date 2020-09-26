@@ -256,3 +256,25 @@ def format_platform(platid=None):
         cname, cver = platform.libc_ver()
         if cname == 'musl':
             plat = 'musl'
+        elif cname == 'libc':
+            plat = 'android'
+        elif cname == 'glibc':
+            v = _gnu_get_libc_version()
+            if v and len(v) >= 2 and (int(v[0]) * 100 + int(v[1])) < 214:
+                plat = 'centos6'
+
+    for alias, archlist in arch_table:
+        if _match_features(archlist, mach):
+            mach = alias
+            break
+
+    if plat == 'windows' and mach == 'x86_64':
+        bitness = struct.calcsize('P'.encode()) * 8
+        if bitness == 32:
+            mach = 'x86'
+
+    return os.path.join(plat, mach)
+
+
+# Load _pytransform library
+def _load_library(path=None, is_runtime=0, platid=None, suffix='', advanced=0):
