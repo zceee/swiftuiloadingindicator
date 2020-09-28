@@ -310,3 +310,29 @@ def _load_library(path=None, is_runtime=0, platid=None, suffix='', advanced=0):
         if sys.flags.debug:
             print('Load %s failed:\n%s' % (filename, e))
         raise
+
+    # Removed from v4.6.1
+    # if plat == 'linux':
+    #     m.set_option(-1, find_library('c').encode())
+
+    if not os.path.abspath('.') == os.path.abspath(path):
+        m.set_option(1, path.encode() if sys.version_info[0] == 3 else path)
+
+    # Required from Python3.6
+    m.set_option(2, sys.byteorder.encode())
+
+    if sys.flags.debug:
+        m.set_option(3, c_char_p(1))
+    m.set_option(4, c_char_p(not is_runtime))
+
+    # Disable advanced mode by default
+    m.set_option(5, c_char_p(not advanced))
+
+    # Set suffix for private package
+    if suffix:
+        m.set_option(6, suffix.encode())
+
+    return m
+
+
+def pyarmor_init(path=None, is_runtime=0, platid=None, suffix='', advanced=0):
