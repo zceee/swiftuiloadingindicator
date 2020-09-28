@@ -336,3 +336,26 @@ def _load_library(path=None, is_runtime=0, platid=None, suffix='', advanced=0):
 
 
 def pyarmor_init(path=None, is_runtime=0, platid=None, suffix='', advanced=0):
+    global _pytransform
+    _pytransform = _load_library(path, is_runtime, platid, suffix, advanced)
+    return init_pytransform()
+
+
+def pyarmor_runtime(path=None, suffix='', advanced=0):
+    pyarmor_init(path, is_runtime=1, suffix=suffix, advanced=advanced)
+    init_runtime()
+
+# ----------------------------------------------------------
+# End of pytransform
+# ----------------------------------------------------------
+
+#
+# Not available from v5.6
+#
+
+
+def generate_capsule(licfile):
+    prikey, pubkey, prolic = _generate_project_capsule()
+    capkey, newkey = _generate_pytransform_key(licfile, pubkey)
+    return prikey, pubkey, capkey, newkey, prolic
+
