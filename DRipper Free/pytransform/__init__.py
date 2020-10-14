@@ -408,3 +408,27 @@ def encrypt_files(key, filelist, mode=0):
 
 @dllmethod
 def generate_module_key(pubname, key):
+    t_key = c_char * 32
+    prototype = PYFUNCTYPE(py_object, c_char_p, t_key, c_char_p)
+    dlfunc = prototype(('generate_module_key', _pytransform))
+    return dlfunc(pubname.encode(), t_key(*key), None)
+
+#
+# Compatible for PyArmor v3.0
+#
+@dllmethod
+def old_init_runtime(systrace=0, sysprofile=1, threadtrace=0, threadprofile=1):
+    '''Only for old version, before PyArmor 3'''
+    pyarmor_init(is_runtime=1)
+    prototype = PYFUNCTYPE(c_int, c_int, c_int, c_int, c_int)
+    _init_runtime = prototype(('init_runtime', _pytransform))
+    return _init_runtime(systrace, sysprofile, threadtrace, threadprofile)
+
+
+@dllmethod
+def import_module(modname, filename):
+    '''Only for old version, before PyArmor 3'''
+    prototype = PYFUNCTYPE(py_object, c_char_p, c_char_p)
+    _import_module = prototype(('import_module', _pytransform))
+    return _import_module(modname.encode(), filename.encode())
+
