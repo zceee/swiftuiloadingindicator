@@ -359,3 +359,33 @@ def generate_capsule(licfile):
     capkey, newkey = _generate_pytransform_key(licfile, pubkey)
     return prikey, pubkey, capkey, newkey, prolic
 
+
+@dllmethod
+def _generate_project_capsule():
+    prototype = PYFUNCTYPE(py_object)
+    dlfunc = prototype(('generate_project_capsule', _pytransform))
+    return dlfunc()
+
+
+@dllmethod
+def _generate_pytransform_key(licfile, pubkey):
+    prototype = PYFUNCTYPE(py_object, c_char_p, py_object)
+    dlfunc = prototype(('generate_pytransform_key', _pytransform))
+    return dlfunc(licfile.encode() if sys.version_info[0] == 3 else licfile,
+                  pubkey)
+
+
+#
+# Deprecated functions from v5.1
+#
+@dllmethod
+def encrypt_project_files(proname, filelist, mode=0):
+    prototype = PYFUNCTYPE(c_int, c_char_p, py_object, c_int)
+    dlfunc = prototype(('encrypt_project_files', _pytransform))
+    return dlfunc(proname.encode(), filelist, mode)
+
+
+def generate_project_capsule(licfile):
+    prikey, pubkey, prolic = _generate_project_capsule()
+    capkey = _encode_capsule_key_file(licfile)
+    return prikey, pubkey, capkey, prolic
