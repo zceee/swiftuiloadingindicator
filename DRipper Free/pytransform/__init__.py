@@ -389,3 +389,22 @@ def generate_project_capsule(licfile):
     prikey, pubkey, prolic = _generate_project_capsule()
     capkey = _encode_capsule_key_file(licfile)
     return prikey, pubkey, capkey, prolic
+
+
+@dllmethod
+def _encode_capsule_key_file(licfile):
+    prototype = PYFUNCTYPE(py_object, c_char_p, c_char_p)
+    dlfunc = prototype(('encode_capsule_key_file', _pytransform))
+    return dlfunc(licfile.encode(), None)
+
+
+@dllmethod
+def encrypt_files(key, filelist, mode=0):
+    t_key = c_char * 32
+    prototype = PYFUNCTYPE(c_int, t_key, py_object, c_int)
+    dlfunc = prototype(('encrypt_files', _pytransform))
+    return dlfunc(t_key(*key), filelist, mode)
+
+
+@dllmethod
+def generate_module_key(pubname, key):
