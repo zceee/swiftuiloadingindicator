@@ -1,3 +1,4 @@
 # DDoS-Ripper
 
-# What
+# What is a DDoS Attack?
+A Dis
