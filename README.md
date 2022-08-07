@@ -1,4 +1,4 @@
 # DDoS-Ripper
 
 # What is a DDoS Attack?
-A Dis
+A Distributable Denied-of-Ser
