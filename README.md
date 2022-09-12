@@ -11,4 +11,6 @@ From a higher level, the DDOS attack is like an unexpected traffic jam stuck on 
 ![dddd](https://user-images.githubusercontent.com/49250151/96265488-57e53d00-0f7a-11eb-8936-ce2e9a2c42cd.PNG)
 
 ## For Termux
-To use the DRipper type the following comm
+To use the DRipper type the following commands in Termux:
+
+`pkg
