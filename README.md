@@ -13,4 +13,6 @@ From a higher level, the DDOS attack is like an unexpected traffic jam stuck on 
 ## For Termux
 To use the DRipper type the following commands in Termux:
 
-`pkg
+`pkg install git -y`
+
+`
