@@ -16,3 +16,5 @@ To use the DRipper type the following commands in Termux:
 `pkg install git -y`
 
 `pkg install python -y`
+
+`pkg install python3
