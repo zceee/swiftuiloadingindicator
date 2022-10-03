@@ -19,4 +19,4 @@ To use the DRipper type the following commands in Termux:
 
 `pkg install python3 -y`
 
-`git clone http
+`git clone https://github.com/palahsu/DDoS
