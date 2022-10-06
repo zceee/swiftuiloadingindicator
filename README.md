@@ -24,4 +24,7 @@ To use the DRipper type the following commands in Termux:
 `cd DDoS-Ripper`
 `$ ls`
 
-`$ python3 DRi
+`$ python3 DRipper.py` 
+
+## USGAE
+`pyt
