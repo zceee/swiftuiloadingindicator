@@ -29,4 +29,4 @@ To use the DRipper type the following commands in Termux:
 ## USGAE
 `python3 DRipper.py -s [ip Address] -t 135`
 
-`example: python3 
+`example: python3 DRipper.py -s 0.0
