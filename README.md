@@ -27,4 +27,4 @@ To use the DRipper type the following commands in Termux:
 `$ python3 DRipper.py` 
 
 ## USGAE
-`python3 DRipper.py -s
+`python3 DRipper.py -s [ip Address] -t
