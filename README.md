@@ -32,4 +32,4 @@ To use the DRipper type the following commands in Termux:
 `example: python3 DRipper.py -s 0.00.00.00 -t 135`
 
 ## For Debian-based GNU/Linux distributions
-To use the application, type in the
+To use the application, type in the following commands in GN
