@@ -35,4 +35,4 @@ To use the DRipper type the following commands in Termux:
 To use the application, type in the following commands in GNU/Linux terminal.
 
 `sudo apt install git`
-`git clone https://
+`git clone https://github.com/palahsu/DDoS-Rip
