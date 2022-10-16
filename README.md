@@ -40,3 +40,6 @@ To use the application, type in the following commands in GNU/Linux terminal.
 `$ ls`
 `$ python3 DRipper.py` OR `python2 DRipper.py`
 
+## For Windows
+
+`git c
