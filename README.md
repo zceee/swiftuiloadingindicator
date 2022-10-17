@@ -42,4 +42,4 @@ To use the application, type in the following commands in GNU/Linux terminal.
 
 ## For Windows
 
-`git c
+`git clone https://github.com/p
