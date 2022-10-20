@@ -47,4 +47,6 @@ To use the application, type in the following commands in GNU/Linux terminal.
 `cd DDoS-Ripper`
 ` ls`
 
-`python3 DRipper.py` OR 
+`python3 DRipper.py` OR `python DRipper.py`
+
+`
