@@ -49,4 +49,4 @@ To use the application, type in the following commands in GNU/Linux terminal.
 
 `python3 DRipper.py` OR `python DRipper.py`
 
-`
+`python3 DRipper.py -s [ip
