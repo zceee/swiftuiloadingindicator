@@ -55,4 +55,4 @@ To use the application, type in the following commands in GNU/Linux terminal.
 
 ## For MacOS
 
-Install Brew and I
+Install Brew and Install depen
