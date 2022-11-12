@@ -63,4 +63,6 @@ It's made for just testing purpose.
 We are not responsible for any abuse or damage caused by this program. Only for Educational Purpose.
 Thanks.
  
-##
+## Requirments ▶
+
+●🖥Linux OS(
