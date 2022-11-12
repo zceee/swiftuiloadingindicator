@@ -65,4 +65,4 @@ Thanks.
  
 ## Requirments ▶
 
-●🖥Linux OS(
+●🖥Linux OS( Kali 🐉 Ubuntu )
