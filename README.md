@@ -66,3 +66,5 @@ Thanks.
 ## Requirments ▶
 
 ●🖥Linux OS( Kali 🐉 Ubuntu )
+
+●📱Termux >
