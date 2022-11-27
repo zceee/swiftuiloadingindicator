@@ -68,3 +68,9 @@ Thanks.
 ●🖥Linux OS( Kali 🐉 Ubuntu )
 
 ●📱Termux >
+
+●🖥Windows
+
+●🖥MAC
+
+# 
