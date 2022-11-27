@@ -75,4 +75,4 @@ Thanks.
 
 # Modified by @palahsu
 
-For any 
+For any kind of help, support, paymen
