@@ -75,4 +75,6 @@ Thanks.
 
 # Modified by @palahsu
 
-For any kind of help, support, payment, suggetion and request
+For any kind of help, support, payment, suggetion and request ask me on Telegram:
+
+<
