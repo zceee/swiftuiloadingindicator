@@ -77,4 +77,4 @@ Thanks.
 
 For any kind of help, support, payment, suggetion and request ask me on Telegram:
 
-<a href="https://t.me/CyberClans"><img src="https://im
+<a href="https://t.me/CyberClans"><img src="https://img.shields.io/badg
