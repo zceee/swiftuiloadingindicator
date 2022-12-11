@@ -79,4 +79,4 @@ For any kind of help, support, payment, suggetion and request ask me on Telegram
 
 <a href="https://t.me/CyberClans"><img src="https://img.shields.io/badge/Telegram-Group%20Telegram%20Join-blue.svg?logo=telegram"></a>
 
-Or Facebook <a href="https://www.facebook.com/aduri.knox01/"><img src="https://img.shields.io/b
+Or Facebook <a href="https://www.facebook.com/aduri.knox01/"><img src="https://img.shields.io/badge/Facebook-Follow%20on%20Fac
