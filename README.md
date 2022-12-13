@@ -83,4 +83,4 @@ Or Facebook <a href="https://www.facebook.com/aduri.knox01/"><img src="https://i
 
 ## Follow on:
 <p align="left">
-<a href="https://github.com/palahsu"><img src="https:/
+<a href="https://github.com/palahsu"><img src="https://img.shields.io/badge/GitHub-Fol
