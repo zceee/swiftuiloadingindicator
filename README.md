@@ -81,4 +81,6 @@ For any kind of help, support, payment, suggetion and request ask me on Telegram
 
 Or Facebook <a href="https://www.facebook.com/aduri.knox01/"><img src="https://img.shields.io/badge/Facebook-Follow%20on%20Facebook-blue.svg?logo=facebook"></a>
 
-## Follow o
+## Follow on:
+<p align="left">
+<a
