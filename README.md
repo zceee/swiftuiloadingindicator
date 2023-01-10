@@ -87,4 +87,4 @@ Or Facebook <a href="https://www.facebook.com/aduri.knox01/"><img src="https://i
 </p><p align="left">
 <a href="https://www.facebook.com/aduri.knox01/"><img src="https://img.shields.io/badge/Facebook-Follow%20on%20Facebook-blue.svg?logo=facebook"></a>
 </p><p align="left">
-<a href="https://t.me/AD0000000"><img src="https://img.sh
+<a href="https://t.me/AD0000000"><img src="https://img.shields.io/badge/Telegram-Contact
